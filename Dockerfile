@@ -2,6 +2,5 @@
 FROM odoo:10.0
 
 COPY ./odoo.conf /etc/odoo/
-RUN chown odoo /etc/odoo/odoo.conf
 
-ENTRYPOINT ["/entrypoint.sh"]
+CMD ["/entrypoint.sh", "odoo"]
