@@ -11,3 +11,12 @@ Configuration vars
  - DB_PORT: Database port, default `5432`
  - USER: Database username, default `odoo`
  - PASSWORD: Database password, default `odoo`
+
+
+Volumes settings in dokku
+-------------------------
+
+    sudo mkdir -p /var/lib/dokku/data/storage/odoo-{addons,filestore}
+    sudo chmod a+rw -R /var/lib/dokku/data/storage/odoo-{addons,filestore}
+    dokku storage:mount odoo /var/lib/dokku/data/storage/odoo-filestore:/var/lib/odoo
+    dokku storage:mount odoo /var/lib/dokku/data/storage/odoo-addons:/mnt/addons
