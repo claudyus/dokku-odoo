@@ -9,6 +9,7 @@ Configuration vars
 -------------------
  - HOST: Database host name, default `db`
  - DB_PORT: Database port, default `5432`
+ - DB_NAME: Will set the `--db-filter` option of odoo, default `odoo`
  - USER: Database username, default `odoo`
  - PASSWORD: Database password, default `odoo`
 

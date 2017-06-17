@@ -8,6 +8,7 @@ set -e
 : ${DB_PORT:=${DB_PORT_5432_TCP_PORT:=5432}}
 : ${USER:=${DB_ENV_POSTGRES_USER:=${POSTGRES_USER:='odoo'}}}
 : ${PASSWORD:=${DB_ENV_POSTGRES_PASSWORD:=${POSTGRES_PASSWORD:='odoo'}}}
+: ${DB_NAME:=${DB_NAME:='odoo'}}
 
 DB_ARGS=()
 function check_config() {
@@ -27,9 +28,9 @@ case "$1" in
     -- | odoo)
         shift
         if [[ "$1" == "scaffold" ]] ; then
-            exec odoo --no-database-list "$@"
+            exec odoo --no-database-list --db-filter "^${DB_NAME}$" "$@"
         else
-            exec odoo --no-database-list "$@" "${DB_ARGS[@]}"
+            exec odoo --no-database-list --db-filter "^${DB_NAME}$" "$@" "${DB_ARGS[@]}"
         fi
         ;;
     -*)
