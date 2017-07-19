@@ -7,6 +7,7 @@ RUN set -x; \
         && apt-get install -y --no-install-recommends \
             ca-certificates \
             curl \
+            patch \
             node-less \
             python-gevent \
             python-pip \
@@ -31,6 +32,10 @@ RUN set -x; \
         && apt-get update \
         && apt-get -y install -f --no-install-recommends \
         && rm -rf /var/lib/apt/lists/* odoo.deb
+
+# Apply patches
+ADD patches/* /patches/
+RUN cat patches/* | patch -p 1 -d /usr/lib/python2.7/dist-packages/
 
 # Copy entrypoint script and Odoo configuration file
 COPY ./entrypoint.sh /

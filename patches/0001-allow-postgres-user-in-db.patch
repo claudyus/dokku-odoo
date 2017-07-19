@@ -1,0 +1,15 @@
+diff --git a/odoo/cli/server.py b/odoo/cli/server.py
+index afb172b..98eb80a 100644
+--- a/odoo/cli/server.py
++++ b/odoo/cli/server.py
+@@ -46,7 +46,6 @@ def check_postgres_user():
+     config = odoo.tools.config
+     if config['db_user'] == 'postgres':
+         sys.stderr.write("Using the database user 'postgres' is a security risk, aborting.")
+-        sys.exit(1)
+
+ def report_configuration():
+     """ Log the server version and some configuration values.
+--
+2.7.4
+
