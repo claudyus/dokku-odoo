@@ -7,11 +7,11 @@ Based on official docker-odoo image this image is just changing the exposed port
 
 Configuration vars
 -------------------
- - HOST: Database host name, default `db`
+ - DB_HOST: Database host name, default `db`
  - DB_PORT: Database port, default `5432`
- - DB_NAME: Will set the `--db-filter` option of odoo, default `odoo`
- - USER: Database username, default `odoo`
- - PASSWORD: Database password, default `odoo`
+ - DB_USER: Database username, default `odoo`
+ - DB_NAME: Set the database name, default `odoo`
+ - DB_PASSWORD: Database password, default `odoo`
 
 
 Volumes settings in dokku
