@@ -23,19 +23,20 @@ check_config "db_host" "$DB_HOST"
 check_config "db_port" "$DB_PORT"
 check_config "db_user" "$DB_USER"
 check_config "database" "$DB_NAME"
+check_config "db-filter" "$DB_NAME"
 check_config "db_password" "$DB_PASSWORD"
 
 case "$1" in
     -- | odoo)
         shift
         if [[ "$1" == "scaffold" ]] ; then
-            exec odoo --no-database-list --db-filter "${DB_NAME}" "$@"
+            exec odoo "$@"
         else
-            exec odoo --no-database-list --db-filter "${DB_NAME}" "$@" "${DB_ARGS[@]}"
+            exec odoo "$@" "${DB_ARGS[@]}"
         fi
         ;;
     -*)
-        exec odoo --no-database-list "$@" "${DB_ARGS[@]}"
+        exec odoo "$@" "${DB_ARGS[@]}"
         ;;
     *)
         exec "$@"
