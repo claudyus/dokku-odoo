@@ -21,3 +21,18 @@ Volumes settings in dokku
     sudo chmod a+rw -R /var/lib/dokku/data/storage/$APP-{addons,filestore}
     dokku storage:mount $APP /var/lib/dokku/data/storage/$APP-filestore:/var/lib/odoo
     dokku storage:mount $APP /var/lib/dokku/data/storage/$APP-addons:/mnt/addons
+
+
+Fix database connection
+-------------------------
+    ```dokku config:set odoo DB_HOST=dokku-postgres-db
+    dokku config:set odoo DB_USER=odoo
+    dokku config:set odoo DB_PASSWORD=odoo```
+    
+ - Create odoo user
+    ```docker exec -it <odoo db container> bash
+    su - postgres
+    psql
+    CREATE USER odoo with password 'odoo' CREATEDB;
+    \q
+    exit```
