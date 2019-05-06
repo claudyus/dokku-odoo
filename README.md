@@ -25,9 +25,9 @@ Volumes settings in dokku
 
 Fix database connection
 -------------------------
-    ```dokku config:set odoo DB_HOST=dokku-postgres-db
+    dokku config:set odoo DB_HOST=dokku-postgres-db
     dokku config:set odoo DB_USER=odoo
-    dokku config:set odoo DB_PASSWORD=odoo```
+    dokku config:set odoo DB_PASSWORD=odoo
     
  - Create odoo user
     ```docker exec -it <odoo db container> bash
@@ -35,4 +35,4 @@ Fix database connection
     psql
     CREATE USER odoo with password 'odoo' CREATEDB;
     \q
-    exit```
+    exit
